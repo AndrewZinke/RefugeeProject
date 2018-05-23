@@ -1,0 +1,25 @@
+CREATE TABLE Country( 
+	cid integer,
+	name varchar(255) NOT NULL,
+	population integer NOT NULL,
+	numRefugees integer NOT NULL,
+	ratio varchar(255) NOT NULL,
+	PRIMARY KEY(cid)
+);
+
+CREATE TABLE Provider(
+	pid integer,
+	name varchar(255) NOT NULL,
+	PRIMARY KEY(pid)
+);
+
+CREATE TABLE Refugee(
+	rid integer,
+	cid integer,
+	pid integer,
+	numAccepted integer,
+	PRIMARY KEY(rid),
+	FOREIGN KEY (cid) REFERENCES Country(cid),
+	FOREIGN KEY (pid) REFERENCES Provider(pid)
+);
+
